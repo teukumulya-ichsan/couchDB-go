@@ -2,14 +2,16 @@ package app
 
 import (
 	"fmt"
-	"github.com/teukumulya-ichsan/couchDB-go/router"
 	"net/http"
+
+	"github.com/teukumulya-ichsan/couchDB-go/router"
 )
 
 var (
 	httpRouter = router.NewChiRouter()
 )
 
+// StartApplication function to started serve http ...
 func StartApplication() {
 	const port = ":3000"
 

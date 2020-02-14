@@ -2,16 +2,19 @@ package users
 
 import (
 	"encoding/json"
+	"net/http"
+
 	"github.com/go-chi/chi"
 	"github.com/teukumulya-ichsan/couchDB-go/interfaces"
 	"github.com/teukumulya-ichsan/couchDB-go/repositories"
-	"net/http"
 )
 
+// UserController struct ...
 type UserController struct {
 	repo interfaces.UsersRepos
 }
 
+// NewUserController Contructor ...
 func NewUserController() *UserController {
 	repos := repositories.NewCouchRepo()
 	return &UserController{
@@ -19,12 +22,13 @@ func NewUserController() *UserController {
 	}
 }
 
-func (c *UserController) GetUserById(res http.ResponseWriter, r *http.Request) {
+// GetUserByID Method (mutation) ...
+func (c *UserController) GetUserByID(res http.ResponseWriter, r *http.Request) {
 	res.Header().Set("Content-Type", "application/json")
 
-	docId := chi.URLParam(r, "id")
+	docID := chi.URLParam(r, "id")
 
-	data, err := c.repo.FindById(docId)
+	data, err := c.repo.FindByID(docID)
 	if err != nil {
 		res.WriteHeader(http.StatusInternalServerError)
 		_ = json.NewEncoder(res).Encode(err.Error())

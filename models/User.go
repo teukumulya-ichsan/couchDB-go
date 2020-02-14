@@ -1,5 +1,6 @@
 package models
 
+// User type ...
 type User struct {
 	ID      string `json:"_id"`
 	Rev     string `json:"_rev,omitempty"`

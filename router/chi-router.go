@@ -2,14 +2,16 @@ package router
 
 import (
 	"fmt"
-	"github.com/go-chi/chi"
 	"net/http"
+
+	"github.com/go-chi/chi"
 )
 
 type chiRouter struct {
 	chi.Router
 }
 
+// NewChiRouter constructor ...
 func NewChiRouter() Router {
 	chiDispatcher := chi.NewRouter()
 	return &chiRouter{chiDispatcher}

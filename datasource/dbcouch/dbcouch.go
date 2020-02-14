@@ -1,12 +1,14 @@
-package couch_db
+package dbcouch
 
 import (
 	"context"
+	"log"
+
 	"github.com/go-kivik/couchdb"
 	"github.com/go-kivik/kivik"
-	"log"
 )
 
+// ConnectCouchDB init...
 func ConnectCouchDB() *kivik.DB {
 	client, err := kivik.New("couch", "http://localhost:5984/")
 	if err != nil {

@@ -7,5 +7,5 @@ var (
 )
 
 func mapsUrls() {
-	httpRouter.GET("/user/{id}", userController.GetUserById)
+	httpRouter.GET("/user/{id}", userController.GetUserByID)
 }
