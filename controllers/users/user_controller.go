@@ -19,15 +19,17 @@ func NewUserController() *UserController {
 	}
 }
 
-func (c *UserController) GetUserById(res http.ResponseWriter, r *http.Request)  {
+func (c *UserController) GetUserById(res http.ResponseWriter, r *http.Request) {
 	res.Header().Set("Content-Type", "application/json")
+
 	docId := chi.URLParam(r, "id")
-	data , err := c.repo.FindById(docId)
+
+	data, err := c.repo.FindById(docId)
 	if err != nil {
 		res.WriteHeader(http.StatusInternalServerError)
 		_ = json.NewEncoder(res).Encode(err.Error())
 	}
-	//fmt.Println(data)
+
 	res.WriteHeader(http.StatusOK)
 	_ = json.NewEncoder(res).Encode(&data)
 }

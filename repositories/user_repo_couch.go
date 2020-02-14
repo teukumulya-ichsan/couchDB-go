@@ -3,7 +3,7 @@ package repositories
 import (
 	"context"
 	"github.com/go-kivik/kivik"
-	"github.com/teukumulya-ichsan/couchDB-go/datasource/couchdb"
+	"github.com/teukumulya-ichsan/couchDB-go/datasource/couch_db"
 	"github.com/teukumulya-ichsan/couchDB-go/models"
 )
 
@@ -13,7 +13,7 @@ type CouchRepo struct {
 
 func NewCouchRepo() *CouchRepo {
 	return &CouchRepo{
-		couchdb.ConnectCouchDB(),
+		couch_db.ConnectCouchDB(),
 	}
 }
 
@@ -25,5 +25,6 @@ func (c *CouchRepo) FindById(docId string) (*models.User, error) {
 	if err := row.ScanDoc(&dataUser); err != nil {
 		return nil, err
 	}
+
 	return dataUser, nil
 }

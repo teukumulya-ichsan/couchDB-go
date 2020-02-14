@@ -1,9 +1,8 @@
-package couchdb
+package couch_db
 
 import (
 	"context"
 	"github.com/go-kivik/couchdb"
-	_ "github.com/go-kivik/couchdb" // The CouchDB driver
 	"github.com/go-kivik/kivik"
 	"log"
 )
@@ -15,13 +14,11 @@ func ConnectCouchDB() *kivik.DB {
 	}
 
 	err = client.Authenticate(context.Background(), couchdb.BasicAuth("root", "secret"))
-	//db := client.DB(context.Background(), "db1")
-	//err = db.Client().Authenticate(context.Background(), couchdb.BasicAuth("root", "secret"))
 	if err != nil {
 		log.Fatalf("Error auth : %v", err)
 	}
 
-	db :=  client.DB(context.Background(), "db1")
+	db := client.DB(context.Background(), "db1")
 
 	return db
 }
