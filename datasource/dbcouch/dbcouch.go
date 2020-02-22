@@ -20,7 +20,7 @@ func ConnectCouchDB() *kivik.DB {
 		log.Fatalf("Error auth : %v", err)
 	}
 
-	db := client.DB(context.Background(), "db1")
+	db := client.DB(context.Background(), "fma")
 
 	return db
 }

@@ -32,3 +32,13 @@ func (c *CouchRepo) FindByID(docID string) (*models.User, error) {
 
 	return dataUser, nil
 }
+
+func (c *CouchRepo) SaveDocs(user models.User) (*models.User, error) {
+	rev, err := c.db.Put(context.Background(), "", user)
+	if err != nil {
+		return nil, err
+	}
+	user.Rev = rev
+
+	return &user, nil
+}

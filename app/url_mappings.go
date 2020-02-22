@@ -8,4 +8,5 @@ var (
 
 func mapsUrls() {
 	httpRouter.GET("/user/{id}", userController.GetUserByID)
+	httpRouter.POST("/user", userController.CreateUser)
 }

@@ -6,6 +6,7 @@ import (
 
 	"github.com/go-chi/chi"
 	"github.com/teukumulya-ichsan/couchDB-go/interfaces"
+	"github.com/teukumulya-ichsan/couchDB-go/models"
 	"github.com/teukumulya-ichsan/couchDB-go/repositories"
 )
 
@@ -14,7 +15,7 @@ type UserController struct {
 	repo interfaces.UsersRepos
 }
 
-// NewUserController Contructor ...
+// NewUserController Constructor ...
 func NewUserController() *UserController {
 	repos := repositories.NewCouchRepo()
 	return &UserController{
@@ -36,4 +37,15 @@ func (c *UserController) GetUserByID(res http.ResponseWriter, r *http.Request) {
 
 	res.WriteHeader(http.StatusOK)
 	_ = json.NewEncoder(res).Encode(&data)
+}
+
+func (c *UserController) CreateUser(res http.ResponseWriter, r *http.Request) {
+	res.Header().Set("Content-Type", "application/json")
+
+	var user models.User
+
+	err := json.NewDocoder.
+	if err!= nil{
+	}
+	c.repo.SaveDocs()
 }
